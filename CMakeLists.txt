@@ -1,5 +1,5 @@
 project (mypackage)
-set (VERSION 1.0.0)
+set (VERSION 1.0.1)
 set (BUILD_NUM "") ## either "" or a number
 cmake_minimum_required (VERSION 3.1)
 set (CMAKE_DISABLE_IN_SOURCE_BUILD ON)
