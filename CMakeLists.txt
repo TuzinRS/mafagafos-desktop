@@ -3,9 +3,9 @@ cmake_minimum_required (VERSION 3.1)
 set (CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
 #################################################################################
+set (CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
 if (APPLE AND NOT XCODE)
   set (CPACK_GENERATOR "DragNDrop")
-  set (CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
 endif (APPLE AND NOT XCODE)
 
 #################################################################################
@@ -51,7 +51,7 @@ add_subdirectory (thirdparty)
 #################################################################################
 
 add_executable (app MACOSX_BUNDLE WIN32 sdl2-app.cpp)
-target_link_libraries (app OpenGL::GL SDL2-static)
+target_link_libraries (app SDL2-interface)
 
 # everything else
 install (TARGETS app
