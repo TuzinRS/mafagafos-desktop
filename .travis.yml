@@ -53,19 +53,30 @@ branches:
 deploy:
   provider: releases
   api_key:
-    secure: mIq0FS093HbZMDuEh0HunkqIPnMT3ernPo3Iu952VCoPXuKUAlgDaqf6mqxjbLVeA0TpEC+gVNXdn8xM6XTGdZ6CEwysI7dz7/n2XrA05MJ7G5IloyWF7vBefXNChKQajlvtLX6+wo0RtIa/LdCkyF8F291egjgcwsfzDOgCISbTnj0rI6D5m5w//OXV2hu9hWfacUq6oTdVetfH9Bw3NCuUapfst1ykUVq9+qRDAogEakejnlYB9BXZBqgP/fzRxzeL4gN3TdOm1N33JGJQkucVpyezmJMcDKdXM+GnBvp/+v8/F7awnG7yBZYsw6P/MuHlj1D/hq6E2RPVrGBIVQDM2i5E8h6uOa/DJ41NO49pPD/DehAZtUAur0DDOpjMNd22F+8xoP0arbJzU9j8H6ayNtVMsvTv0+JVit/B3b9e8ITy66qeH0LQmbkFgl1SnnyDhM0Z8znmQfpgGL3idTp1jBapvnsDaxcMAmwhLRqILh4ZWKoDGYXe/YpCXuL6sDvxtA/df09iTzG+uEvLrdQTQzBaiMBzRfO6gY2C7zk//GH3glqAvwmtX7Jg9fhQ/w1wil7nm2oF76NAvmKSB6DKjLf5o6NZ5iK1XlMyImfayXh78dBvPIXPDkK+zDBvmLqDHo9dRm3Sfs42t7O5zMGutHyNgzeYmXruG65Q2sY=
-  file_glob: true
-  file:
-    - mypackage*install-win32.exe
-    - mypackage*install-win32.zip
-    - mypackage*.dmg
-    - mypackage*.deb
-    - mypackage*.rpm
-    - mypackage*.tar.gz
-  skip_cleanup: true
+    secure: VMtT8yyvCn3oh/JGyQRQP0iSPwQ9egeIf4EOffpoucicZBkqNGPKtSGLQ4z4fIXs7TN+u6zy52N+vgM0wTy0wl2GG2zrxD03p26rJseARAWCLK/qlBTKtbV6wSv8kzyJEG0pAq/Lx7WpX0ds8OiaR3Cn9gPlliSZSH24rsCit1KOAB9HRpMA4KQfFWFGFapN8BAW4X1XpDBP1Dqdra3qLjfJSoa/iOYpWn6DM6M1z0Q9e75QoQ1Dv5EInLMcaVb6KceJRFsaB7PNJVd9UtqKNRiBWtjJxWbG1yiPYLFSrcY+w9en98NNspX4jVTTmTiqfQ8kEtE6LkYEWqOhKkMyktZQ20q5OGr/gCWMbNG5nYkLL6xFKUG1tCfblvy02dV/TT/dAPimdmdx70h3TdZXtETS1HYvjpw1ucVgI//9hU41t+kBvl+8JYzwxMLPIVy9OmukDo//6I2booFJbMr3/TELVEYKxIKLB6AiynM2MzDmDB80FrCGbsLdekz1HtAn+TJacMk7lvGtLOAeob0U8v4NzhGEbaEptjz1pPnWrbisAh+g8wbd1eY/ljzjIiuxqlMlzrMCrxPvUF4SBEHMQ1wLsEGM5yPY6M8qcnCevmWaJLW+SnhQfrScdBIIK41LILUJx0ijksvPNvTqwdUbOzTqdQcTapsrED5CFsmchqE=
+  file: mypackage*
   overwrite: true
+  skip_cleanup: true
   draft: true
-  name: $TRAVIS_TAG
   on:
     repo: tesch1/SDL2-cmake-example
     tags: true
+# deploy:
+#   provider: releases
+#   api_key:
+#    secure: mIq0FS093HbZMDuEh0HunkqIPnMT3ernPo3Iu952VCoPXuKUAlgDaqf6mqxjbLVeA0TpEC+gVNXdn8xM6XTGdZ6CEwysI7dz7/n2XrA05MJ7G5IloyWF7vBefXNChKQajlvtLX6+wo0RtIa/LdCkyF8F291egjgcwsfzDOgCISbTnj0rI6D5m5w//OXV2hu9hWfacUq6oTdVetfH9Bw3NCuUapfst1ykUVq9+qRDAogEakejnlYB9BXZBqgP/fzRxzeL4gN3TdOm1N33JGJQkucVpyezmJMcDKdXM+GnBvp/+v8/F7awnG7yBZYsw6P/MuHlj1D/hq6E2RPVrGBIVQDM2i5E8h6uOa/DJ41NO49pPD/DehAZtUAur0DDOpjMNd22F+8xoP0arbJzU9j8H6ayNtVMsvTv0+JVit/B3b9e8ITy66qeH0LQmbkFgl1SnnyDhM0Z8znmQfpgGL3idTp1jBapvnsDaxcMAmwhLRqILh4ZWKoDGYXe/YpCXuL6sDvxtA/df09iTzG+uEvLrdQTQzBaiMBzRfO6gY2C7zk//GH3glqAvwmtX7Jg9fhQ/w1wil7nm2oF76NAvmKSB6DKjLf5o6NZ5iK1XlMyImfayXh78dBvPIXPDkK+zDBvmLqDHo9dRm3Sfs42t7O5zMGutHyNgzeYmXruG65Q2sY=
+#  file_glob: true
+#  file:
+#    - mypackage*install-win32.exe
+#    - mypackage*install-win32.zip
+#    - mypackage*.dmg
+#    - mypackage*.deb
+#    - mypackage*.rpm
+#    - mypackage*.tar.gz
+#  skip_cleanup: true
+#  overwrite: true
+#  draft: true
+#  name: $TRAVIS_TAG
+#  on:
+#    repo: tesch1/SDL2-cmake-example
+#    tags: true
