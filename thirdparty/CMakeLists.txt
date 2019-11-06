@@ -37,7 +37,7 @@ if (hasParent)
   set (OpenGL_GL_PREFERENCE GLVND)
   find_package (OpenGL REQUIRED)
 
-  cmake_policy (SET CMP0079 NEW)
+  #cmake_policy (SET CMP0079 NEW) # requires cmake>=3.13
   if (SDL_SHARED)
     #target_link_libraries (SDL2 OpenGL::GL) # requires cmake>=3.13
   endif (SDL_SHARED)
