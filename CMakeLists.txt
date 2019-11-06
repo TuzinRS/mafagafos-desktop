@@ -50,7 +50,7 @@ add_subdirectory (thirdparty)
 
 #################################################################################
 
-add_executable (app MACOSX_BUNDLE sdl2-app.cpp)
+add_executable (app MACOSX_BUNDLE WIN32_EXECUTABLE sdl2-app.cpp)
 target_link_libraries (app SDL2-static)
 
 # everything else
