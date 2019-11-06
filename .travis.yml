@@ -14,15 +14,15 @@ matrix:
   - os: linux
     compiler: gcc
     script:
-    - cmake . -B Build -DCMAKE_BUILD_TYPE=Release
-    - cmake --build Build --config Release --target package
+    - cmake . -Bbuild -DCMAKE_BUILD_TYPE=Release
+    - cmake --build build --config Release --target package
   - os: windows
     language: cpp
     install:
     - choco install nsis 7zip
     script:
-    - cmake . -B Build
-    - cmake --build Build --config Release --target package
+    - cmake . -Bbuild
+    - cmake --build build --config Release --target package
   - os: osx
     osx_image: xcode9.1
     script:
@@ -32,8 +32,8 @@ matrix:
 #            CODE_SIGN_IDENTITY='' CODE_SIGNING_REQUIRED=NO
 #    - ls
 #    - ls Release-iphoneos
-    - cmake . -B Build -DCMAKE_BUILD_TYPE=Release
-    - cmake --build Build --config Release --target package
+    - cmake . -Bbuild -DCMAKE_BUILD_TYPE=Release
+    - cmake --build build --config Release --target package
 before_install:
 - |
   if [[ $TRAVIS_OS_NAME == linux && "$CXX" = "g++" ]]; then
