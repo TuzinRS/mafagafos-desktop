@@ -26,12 +26,6 @@ matrix:
   - os: osx
     osx_image: xcode9.1
     script:
-#    - ./build.sh ios -x && cd Build-iOS
-#    - |
-#      xcrun xcodebuild -quiet -project SpinDrops.xcodeproj -target SpinDrops \
-#            CODE_SIGN_IDENTITY='' CODE_SIGNING_REQUIRED=NO
-#    - ls
-#    - ls Release-iphoneos
     - cmake . -Bbuild -DCMAKE_BUILD_TYPE=Release
     - cmake --build build --config Release --target package
 before_install:
@@ -59,7 +53,7 @@ branches:
 deploy:
   provider: releases
   api_key:
-    secure: sZqOSQfG65AiBXPOc2eTkIx/PUWgmGlCdlFcKe+tf1Hk8zCg4PryjoOB066QWmfR0PqAhKi9CTHk9rtmc8NLdXD1BRm5ctxJvh0pTX1sbB5IxaYanNcC5YsTIy76TXD+PHCTH/5Vk8yyihNa4WGUSHchecQDKADGdGm9QhRMq3FcxwQc/Z00cO/WK7oIkCicESV8k142HFX/sfXH8XQzOW9PvhYUZyHQGYRcOLQCiIhvnhYrdJHszndriZkB2705I0nal5aJCLC7vC5e078aBgghFBiadbnVGp1wO0K17Vrrg7K2NQ9OAuaGh0gFemiB8G56AWNCHsJIxxoI/xXjAlE4YyHmkfjAO89pqcMDaYj8lASTYjrpjC6JT0pkxzTijFn1YD7dzz1CjRikMbWOXNotNSir3XosdV7h6lMC5IoK3yT0G14YK5CiaOeNiev++1i4s39NNDC1t+eYmN5//W752cMhej04oMH38yBNiyW5CdJL4pQ/Zi9/P3yIVOQyEq7jAFRaScXCcBfFmdR8gIXcn9DDXoI3Hpv5kTqBgiv413v5jwGjl/N6VDh7gGUsuEiO6theI1Lhr9uoO7h0yWNs9YpYGGyohQukz/rqjMIFwr3QQGKzCKLexDLVg7LbAt/b5h/W55dyVtI31tftm4v3iBBeqToZXfijAV7t6Mc=
+    secure: mIq0FS093HbZMDuEh0HunkqIPnMT3ernPo3Iu952VCoPXuKUAlgDaqf6mqxjbLVeA0TpEC+gVNXdn8xM6XTGdZ6CEwysI7dz7/n2XrA05MJ7G5IloyWF7vBefXNChKQajlvtLX6+wo0RtIa/LdCkyF8F291egjgcwsfzDOgCISbTnj0rI6D5m5w//OXV2hu9hWfacUq6oTdVetfH9Bw3NCuUapfst1ykUVq9+qRDAogEakejnlYB9BXZBqgP/fzRxzeL4gN3TdOm1N33JGJQkucVpyezmJMcDKdXM+GnBvp/+v8/F7awnG7yBZYsw6P/MuHlj1D/hq6E2RPVrGBIVQDM2i5E8h6uOa/DJ41NO49pPD/DehAZtUAur0DDOpjMNd22F+8xoP0arbJzU9j8H6ayNtVMsvTv0+JVit/B3b9e8ITy66qeH0LQmbkFgl1SnnyDhM0Z8znmQfpgGL3idTp1jBapvnsDaxcMAmwhLRqILh4ZWKoDGYXe/YpCXuL6sDvxtA/df09iTzG+uEvLrdQTQzBaiMBzRfO6gY2C7zk//GH3glqAvwmtX7Jg9fhQ/w1wil7nm2oF76NAvmKSB6DKjLf5o6NZ5iK1XlMyImfayXh78dBvPIXPDkK+zDBvmLqDHo9dRm3Sfs42t7O5zMGutHyNgzeYmXruG65Q2sY=
   file_glob: true
   file:
     - mypackage*install-win32.exe
