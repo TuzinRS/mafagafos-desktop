@@ -39,9 +39,9 @@ if (hasParent)
 
   cmake_policy (SET CMP0079 NEW)
   if (SDL_SHARED)
-    target_link_libraries (SDL2 OpenGL::GL)
+    #target_link_libraries (SDL2 OpenGL::GL) # requires cmake>=3.13
   endif (SDL_SHARED)
   if (SDL_STATIC)
-    target_link_libraries (SDL2-static OpenGL::GL)
+    #target_link_libraries (SDL2-static OpenGL::GL) # requires cmake>=3.13
   endif (SDL_STATIC)
 endif (hasParent)
