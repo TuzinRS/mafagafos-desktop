@@ -1,9 +1,8 @@
 #include <iostream>
-
 #include <SDL.h>
 
-// if we're compiling for iOS (iPhone/iPad)
 #ifdef __IPHONEOS__
+// if we're compiling for iOS (iPhone/iPad)
 # include <SDL_opengles.h> // we want to use OpenGL ES
 #else
 # include <SDL_opengl.h> // otherwise we want to use OpenGL
@@ -12,8 +11,13 @@
 int main(int argc, char * argv[])
 {
   // Initialize SDL with video
-  SDL_Init(SDL_INIT_VIDEO);
-	
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
+  {
+    std::cerr << "Error initializing SDL\n";
+    return 1;
+  }
+  atexit(SDL_Quit);
+
   // Create an SDL window
   SDL_Window* window = SDL_CreateWindow("Test",
                                         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
