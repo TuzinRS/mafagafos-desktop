@@ -4,7 +4,7 @@ set (CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
 #################################################################################
 if (APPLE AND NOT XCODE)
-  set (CPACK_GENERATOR "DragNDrop")
+  set (CPACK_GENERATOR "DragNDrop;TGZ")
   set (CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
 endif (APPLE AND NOT XCODE)
 
