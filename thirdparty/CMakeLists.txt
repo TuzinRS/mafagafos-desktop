@@ -33,12 +33,14 @@ if (hasParent)
   set (SDL_STATIC_PIC ON CACHE BOOL "" FORCE)
   set (SDL_SHARED OFF CACHE BOOL "" FORCE)
   add_subdirectory ("${source_dir}" "${CMAKE_CURRENT_BINARY_DIR}/sdl2X")
-
   set (OpenGL_GL_PREFERENCE GLVND)
   find_package (OpenGL REQUIRED)
   add_library (SDL2-interface INTERFACE IMPORTED GLOBAL)
-  target_link_libraries (SDL2-interface INTERFACE SDL2-static)
   target_link_libraries (SDL2-interface INTERFACE OpenGL::GL)
+  target_link_libraries (SDL2-interface INTERFACE SDL2-static)
+  if (WIN32)
+    target_link_libraries (SDL2-interface INTERFACE SDL2main)
+  endif (WIN32)
 
   # requires cmake>=3.13
   #cmake_policy (SET CMP0079 NEW)

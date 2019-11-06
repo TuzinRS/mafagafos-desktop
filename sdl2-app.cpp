@@ -8,6 +8,9 @@
 # include <SDL_opengl.h> // otherwise we want to use OpenGL
 #endif
 
+#ifdef __cplusplus
+extern "C"
+#endif
 int main(int argc, char * argv[])
 {
   // Initialize SDL with video
