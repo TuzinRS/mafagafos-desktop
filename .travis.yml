@@ -55,7 +55,7 @@ deploy:
   api_key:
     secure: nEruQvXi1cSFerv+LBIR1tjlVkBCWH+coMwY+14R1tITrA2NQsnxB1QuqLQ6Zx4HAZmOnUYUmjBvIzWSrsqNmwEM0S9uG0zUqwu5KwB1TwlOWtHesgORCMQhgfnTA7xLt7DPC6s//kpF0Ndu8it4DXX/cjxate+tIkvuVZgKUYnWylPeRmcPUorGTTDYI9hprjtC69ambIrAhqGtumXWVMkhpJsnSilpN8LCZEvCA9ScI9Sx58hY9cTbuAW4FMw0YdULeKqeTRgF+faOz6igfQjngJvgOatlBGkk1W8q8ZQ97/wB/tZtXRuptHaGIA82DkUQMaGFc+7t5Z7SMIpnuoSB0s9w8Foh1ukfH+reZiOnxkWDCQ5jET7TjsWcIf9VGENpSnfFhwPfC4CiIh4GKhpz4fXuOADeIgzpJapgpQ5IEVyPmRpi29hQZfn7G0hjCz9c6537jDS3kp/x2KBgzxMJuDhWSEVdqquIS1B+zjb8mDGaAugjLumS9I4SIZr9vqkqICoPO12uTS91Lql70FjwAhhiLGq/B4RAxAcsA/iiobUEQZgjtPEUtzyQEvELf0GF/ORjSo40hiEeLPGU5fKGBi5LEBU973ZTbc7UVO42MP4043Nf/8JdDrMuXpmTpijqViclbC+a24GZgrRjD1YS9Q6aoKVThoG9om6h6bQ=
   file_glob: true
-  file: mypackage*
+  file: build/mypackage*
   skip_cleanup: true
   overwrite: true
   draft: true
