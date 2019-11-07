@@ -2,7 +2,7 @@ project (mypackage)
 cmake_minimum_required (VERSION 3.1)
 set (VERSION_MAJOR "1")
 set (VERSION_MINOR "0")
-set (VERSION_PATCH "2")
+set (VERSION_PATCH "3")
 set (VERSION_BUILD "") # ie "-beta1", or empty string if release: ""
 set (VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
 set (CMAKE_DISABLE_IN_SOURCE_BUILD ON)
