@@ -1,8 +1,26 @@
 project (mypackage)
-set (VERSION 1.0.1)
-set (BUILD_NUM "") ## either "" or a number
 cmake_minimum_required (VERSION 3.1)
+set (VERSION_MAJOR "1")
+set (VERSION_MINOR "0")
+set (VERSION_PATCH "1")
+set (VERSION_BUILD "") # ie "-beta1", or empty string if release: ""
+set (VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
 set (CMAKE_DISABLE_IN_SOURCE_BUILD ON)
+
+#
+# This approach to labeling beta versions is in line with Apple's
+# inflexible versioning scheme for pre-release beta testing versions,
+# for both iOS and macOS.  Apple allows, ie, FlightTest to release
+# versions like "1.0.0b1" (b2,b2,...) as a pre-release beta for
+# "1.0.0".  There is no other possible beta numbering scheme in Apple
+# world, dont even bother trying! :D This labelling with "-beta2" or
+# "" for releases also plays well with the other package generators.
+#
+if (VERSION_BUILD)
+  string (REGEX MATCH "[0-9]+" VERSION_BUILD_NUM ${VERSION_BUILD})
+else ()
+  set (VERSION_BUILD_NUM "")
+endif ()
 
 #################################################################################
 set (CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
@@ -48,7 +66,7 @@ if (THIRDPARTY_BUILD_RESULT)
 endif ()
 
 # import the thirdparty's location variables
-add_subdirectory (thirdparty)
+add_subdirectory (thirdparty EXCLUDE_FROM_ALL)
 
 #################################################################################
 
@@ -64,10 +82,14 @@ install (TARGETS app
 #################################################################################
 
 # CPack
-set (CPACK_COMPONENTS_ALL App FORCE)
+set (CPACK_COMPONENTS_ALL App)
+
 set (CPACK_PACKAGE_NAME "mypackage")
-set (CPACK_PACKAGE_VERSION "${VERSION}${BUILD_NUM}")
 set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "sdl2 app package")
+set (CPACK_PACKAGE_VERSION "${VERSION}${VERSION_BUILD}")
+set (CPACK_PACKAGE_VERSION_MAJOR "${VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${VERSION_MINOR}")
+set (CPACK_PACKAGE_VERSION_PATCH "${VERSION_PATCH}")
 set (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}")
 set (CPACK_PACKAGE_URL "http://sdl.org")
 set (CPACK_PACKAGE_VENDOR "nobody")
@@ -91,7 +113,7 @@ endif (APPLE AND NOT XCODE)
 
 # unix
 if (UNIX AND NOT APPLE)
-  set (CPACK_GENERATOR "RPM;TGZ;DEB")
+  set (CPACK_GENERATOR "RPM;TGZ;DEB;STGZ")
   set (CPACK_INCLUDE_TOPLEVEL_DIRECTORY 1)
   set (CPACK_VERBATIM_VARIABLES TRUE) # fixes @ in rpm file names
   set (CPACK_RPM_PACKAGE_RELEASE 1)
