@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project  name="MafagaFight" default="compile" basedir=".">
+    <description>
+        Construtor para IDEs baseadas em Ant (AKA NetBeans).
+    </description>
+
+    <target name="compile">
+        <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+            <classpath>
+                <pathelement location=".ant/ant-contrib.jar"/>
+            </classpath>
+        </taskdef>
+        <condition property="isWindows">
+            <os family="windows" />
+        </condition>
+
+        <condition property="isLinux">
+            <os family="unix" />
+        </condition>
+
+        <if>
+            <isset property="isLinux"/>
+            <then>
+                <antcall target="compile.linux"/>
+            </then>
+            <else>
+                <antcall target="compile.windows"/>
+            </else>
+        </if>
+        <antcall target="run"/>
+    </target>
+
+    <target name="compile.windows" if="isWindows">
+        <echo message="tá usando um Windows, seu boiola!"/>
+        <exec executable="./build.bat"/>
+        <antcall target="run"/>
+    </target>
+
+    <target name="compile.linux" if="isLinux">
+        <echo message="tá usando um Linux, fodão!"/>
+        <exec executable="/bin/bash">
+            <arg value="${basedir}/build.sh"/>
+        </exec>
+        <antcall target="run"/>
+    </target>
+
+    <target name="run">
+        <if>
+        <isset property="isLinux"/>
+        <then>
+            <exec executable="./build/mafagafight"/>
+        </then>
+        <else>
+            <exec executable="./build/mafagafight.exe"/>
+        </else>
+    </if>
+    </target>
+</project>
